@@ -1,0 +1,100 @@
+<div style="align:center">
+  <h2>List of Records</h2>
+  <!-- <button (click)="addStudent()">add</button>
+  <div>
+    <label>Name</label>
+    <input ctype="text" [(ngModel)]="sName" placeholder="Name" />
+    <label>Email</label>
+    <input type="email" [(ngModel)]="sEmail" placeholder="Email" />
+    <label>Location</label>
+    <input type="text" [(ngModel)]="sLocation" placeholder="Location" />
+    <button (click)="getStudent()">Addstudent</button>
+  </div> -->
+  <table id="records">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Location</th>
+      <th><button class="btn" (click)="addStudent()"><i class="fa fa-plus-square"></i></button></th>
+    </tr>
+    <!-- <tr *ngIf="change = true">
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr> -->
+    <tr *ngFor="let val of studentsDetails ; let i = index">
+
+      <!-- <td>
+        <ng-container *ngIf="i != selectedIndex">
+          {{val.name}}
+        </ng-container>
+        <ng-container *ngIf="i == selectedIndex">
+            <input [(ngModel)] = "val.name">
+        </ng-container>
+      </td>
+      <td>
+          <ng-container *ngIf="i != selectedIndex">
+            {{val.email}}
+          </ng-container>
+          <ng-container *ngIf="i == selectedIndex">
+              <input [(ngModel)] = "val.email">
+          </ng-container>
+        </td>
+        <td>
+            <ng-container *ngIf="i != selectedIndex">
+              {{val.location}}
+            </ng-container>
+            <ng-container *ngIf="i == selectedIndex">
+                <input [(ngModel)] = "val.location">
+            </ng-container>
+            
+          </td> 
+
+          
+          <td>
+              <button *ngIf="i == selectedIndex" class="btn" (click)="saveRecords(); selectedIndex = !selectedIndex"><i class="fa fa-save"></i></button>&nbsp;&nbsp; 
+              <button *ngIf="i == selectedIndex" type="reset" class="btn" (click)="close()" ><i class="fa fa-close"></i></button>
+            </td>
+      
+       <ng-container *ngIf="editable   " >
+          <td ><input type="text" [(ngModel)]="val.name"/></td> 
+           <td ><input type="text" [(ngModel)]="val.email"/></td>
+          <td ><input type="text" [(ngModel)]="val.location"/></td> 
+          <td>
+              <button class="btn" (click)="saveRecords()"><i class="fa fa-save"></i></button>&nbsp;&nbsp; 
+              <button type="reset" class="btn" (click)="close()" ><i class="fa fa-close"></i></button>
+            </td>
+          </ng-container>
+    
+      <ng-container ><td >{{val.name}}</td>
+      <td>{{val.email}}</td>
+      <td>{{val.location}}</td> 
+      <td> 
+        <button class="btn" (click)="editRecords(); selectedIndex = i"><i class="fa fa-edit"></i></button>&nbsp;&nbsp; 
+        <button class="btn" (click)="clear(val.name)"><i class="fa fa-close"></i></button>
+      </td>
+    </ng-container>  -->
+    
+      <td>
+        <span *ngIf="!val.editable">{{val.name}}</span>
+        <input *ngIf="val.editable" [(ngModel)]="val.name">
+      </td>
+      <td>
+        <span *ngIf="!val.editable">{{val.email}}</span>
+        <input *ngIf="val.editable" [(ngModel)]="val.email">
+      </td>
+      <td>
+        <span *ngIf="!val.editable">{{val.location}}</span>
+        <input *ngIf="val.editable" [(ngModel)]="val.location">&nbsp;&nbsp;
+        
+      </td>
+      <td>
+          <button *ngIf="val.editable" class="btn" (click)="saveRecords(val)"><i class="fa fa-save"></i></button>&nbsp;&nbsp;
+          <button *ngIf="val.editable" class="btn" (click)="ngOnInit();val.editable = !val.editable"><i class="fa fa-close"></i></button>
+        <button *ngIf="!val.editable " class="btn" (click)="val.editable = !val.editable "><i class="fa fa-edit"></i></button>&nbsp;&nbsp;
+        <button *ngIf="!val.editable" class="btn" (click)="clear(val.name)"><i class="fa fa-trash"></i></button>
+      </td>
+    </tr>
+   
+  </table>
+</div>
